@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shutdown
+spec:
+  containers:
+  - name: until
+    image: busybox:latest
+    imagePullPolicy: IfNotPresent
+    command: ["sh", "-c"]
+    args:
+    - until [ -f /shutdown ];
+      do
+      sleep 10;
+      echo i am alive;
+      done

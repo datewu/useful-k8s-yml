@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: infinity
+  labels:
+    app: tail-f
+spec:
+  containers:
+  - name: busybox-tail
+    image: registry.cn-hangzhou.aliyuncs.com/wise2c/busybox:latest
+    command: ["tail"]
+    args:
+    - '-f'
+    - /dev/null
