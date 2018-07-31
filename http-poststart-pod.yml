@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug-lifecycle
+spec:
+  containers:
+  - image: nginx:latest
+    name: ng
+    imagePullPolicy: Never
+    readiness:
+      httpGet:
+        port: 80
+        path: /
+    lifecycle:
+      postStart:
+        httpGet:
+          port: 8080
+          path: /teststart
+      preStop:
+        httpGet:
+          port: 8080
+          path: /teststop
